@@ -10,7 +10,8 @@ echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selecti
 apt-get -y install oracle-java7-installer
 ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
 
-#Install Gradle. Groovy will be installed automatically
+#Install Groovy and Gradle
+apt-get -y install groovy
 add-apt-repository -y ppa:cwchien/gradle
 apt-get -q -y update
 apt-get -y install gradle
@@ -20,3 +21,10 @@ apt-get -y install leiningen
 
 #Install Scala and Sbt
 apt-get -y install scala
+wget http://apt.typesafe.com/repo-deb-build-0002.deb
+dpkg -i repo-deb-build-0002.deb
+apt-get -q -y update
+apt-get -y install sbt
+
+
+
