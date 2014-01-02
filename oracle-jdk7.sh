@@ -33,6 +33,7 @@ javac -version
 groovy -v
 gradle -v
 
+export LEIN_ROOT=true
 lein version
 clojure <<EOF
 EOF
