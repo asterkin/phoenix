@@ -20,7 +20,3 @@ apt-get -y install leiningen
 
 #Install Scala and Sbt
 apt-get -y install scala
-wget http://repo.scala-sbt.org/scalasbt/sbt-native-packages/org/scala-sbt/sbt/0.13.1/sbt.deb
-dpkg -i sbt.deb
-apt-get -q -y update
-apt-get -y install sbt
