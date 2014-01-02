@@ -19,8 +19,8 @@ apt-get -y install gradle
 #Install Leiningen. Clojue will be installed automatically
 apt-get -y install leiningen
 
-#Install and run Sbt. Scala will be installed automatically
-http://apt.typesafe.com/repo-deb-build-0002.deb
+#Install Sbt
+wget http://apt.typesafe.com/repo-deb-build-0002.deb
 dpkg -i repo-deb-build-0002.deb
 apt-get -q -y update
 apt-get -y install sbt
@@ -38,6 +38,8 @@ lein version
 clojure <<EOF
 EOF
 
+#Will install scala
+sbt version
 scala -version
 scalac -version
 
