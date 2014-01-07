@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 #TODO: protect against double configuration of git
 #TODO: automatically detect user.name and user.mail or at lest ensure all args are supplied in command line
 
