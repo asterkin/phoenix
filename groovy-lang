@@ -1,17 +1,23 @@
 #!/bin/bash
-#TODO: either install groovy 2.0 or configure eclipse to use 1.8
-# or even better use groovy 2.1
 
 apt-get -y update
 apt-get -y upgrade
-apt-get -y install groovy
+apt-get -y install openjdk-7-jdk
+wget http://dist.groovy.codehaus.org/distributions/groovy-binary-2.0.8.zip
+unzip groovy-binary-2.0.8.zip
+rm groovy-2.0.8/bin/*.bat
+rm groovy-2.0.8/bin/*.icns
+mv groovy-2.0.8 /usr/share
+for fn in $( ls /usr/share/groovy-2.0.8/bin ); do
+  ln -s /usr/share/groovy-2.0.8/bin/$fn /usr/bin/$fn
+done
+rm groovy-binary-2.0.8.zip
 if [ "$1" == "dev" ]; then
     /usr/lib/eclipse/eclipse -nosplash \
       -application org.eclipse.equinox.p2.director \
       -repository http://dist.springsource.org/release/GRECLIPSE/e4.2/ \
       -destination /usr/lib/eclipse \
-      -installIU org.codehaus.groovy.eclipse.feature.feature.group \
-      -uninstallIU org.codehaus.groovy20.feature.feature.group 
+      -installIU org.codehaus.groovy.eclipse.feature.feature.group 
 fi
 groovy -version
 groovyc -version
