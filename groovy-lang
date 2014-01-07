@@ -10,7 +10,8 @@ if [ "$1" == "dev" ]; then
       -application org.eclipse.equinox.p2.director \
       -repository http://dist.springsource.org/release/GRECLIPSE/e4.2/ \
       -destination /usr/lib/eclipse \
-      -installIU org.codehaus.groovy.eclipse.feature.feature.group
+      -installIU org.codehaus.groovy18.feature.feature.group \
+      -installIU org.codehaus.groovy.headless.feature.feature.group 
 fi
 groovy -version
 groovyc -version
