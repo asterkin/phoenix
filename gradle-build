@@ -1,9 +1,16 @@
 #!/bin/bash
 
-apt-get -y update
-apt-get -y upgrade
-apt-get -y install openjdk-7-jdk
-add-apt-repository -y ppa:cwchien/gradle
-apt-get -q -y update
-apt-get -y install gradle
-
+if [ "$1" == "ide" ]; then
+    /usr/lib/eclipse/eclipse -nosplash \
+      -application org.eclipse.equinox.p2.director \
+      -repository http://dist.springsource.com/release/TOOLS/gradle \
+      -destination /usr/lib/eclipse \
+      -installIU org.springsource.ide.eclipse.gradle.feature.feature.group
+else
+  apt-get -y update
+  apt-get -y upgrade
+  apt-get -y install openjdk-7-jdk
+  add-apt-repository -y ppa:cwchien/gradle
+  apt-get -q -y update
+  apt-get -y install gradle
+fi
