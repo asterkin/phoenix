@@ -1,0 +1,9 @@
+#!/bin/bash
+
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install openjdk-7-jdk
+add-apt-repository -y ppa:cwchien/gradle
+apt-get -q -y update
+apt-get -y install gradle
+
