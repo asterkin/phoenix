@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" == "ide" ]; then
+if [ "$1" == "dev" ]; then
     /usr/lib/eclipse/eclipse -nosplash \
       -application org.eclipse.equinox.p2.director \
       -repository http://dist.springsource.org/release/GRECLIPSE/e4.2/ \
