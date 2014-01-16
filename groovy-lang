@@ -10,15 +10,15 @@ else
   apt-get -y update
   apt-get -y upgrade
   apt-get -y install openjdk-7-jdk
-  wget http://dist.groovy.codehaus.org/distributions/groovy-binary-2.0.8.zip
-  unzip groovy-binary-2.0.8.zip
-  rm groovy-2.0.8/bin/*.bat
-  rm groovy-2.0.8/bin/*.icns
-  mv groovy-2.0.8 /usr/share
-  for fn in $( ls /usr/share/groovy-2.0.8/bin ); do
-    ln -s /usr/share/groovy-2.0.8/bin/$fn /usr/bin/$fn
+  wget http://dist.groovy.codehaus.org/distributions/groovy-binary-2.2.1.zip
+  unzip groovy-binary-2.2.1.zip
+  rm groovy-2.2.1/bin/*.bat
+  rm groovy-2.2.1/bin/*.icns
+  mv groovy-2.2.1 /usr/share
+  for fn in $( ls /usr/share/groovy-2.2.1/bin ); do
+    ln -s /usr/share/groovy-2.2.1/bin/$fn /usr/bin/$fn
   done
-  rm groovy-binary-2.0.8.zip
+  rm groovy-binary-2.2.1.zip
   groovy -version
   groovyc -version 
 fi
