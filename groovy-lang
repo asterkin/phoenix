@@ -7,9 +7,13 @@ if [ "$1" == "ide" ]; then
       -destination /usr/lib/eclipse \
       -installIU org.codehaus.groovy.eclipse.feature.feature.group
 else
-  apt-get -y update
-  apt-get -y upgrade
-  apt-get -y install openjdk-7-jdk
+  apt-get -y install python-software-properties
+  add-apt-repository -y ppa:webupd8team/java
+  apt-get -q -y update
+  echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+  apt-get -y install oracle-java7-installer
+  ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
   wget http://dist.groovy.codehaus.org/distributions/groovy-binary-2.2.1.zip
   unzip groovy-binary-2.2.1.zip
   rm groovy-2.2.1/bin/*.bat
