@@ -1,0 +1,30 @@
+#!/bin/bash
+
+apt-get -y install python-software-properties
+add-apt-repository -y ppa:webupd8team/java
+apt-get -q -y update
+echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+apt-get -y install oracle-java7-installer
+ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
+
+if [ "$1" == "ide" ]; then
+   wget -O /tmp/scala-ide.tar.gz http://downloads.typesafe.com/scalaide-pack/3.0.2.vfinal-210-20131028/scala-SDK-3.0.2-vfinal-2.10-linux.gtk.x86_64.tar.gz
+   tar -xvf /tmp/scala-ide.tar.gz
+   mv eclipse /usr/lib
+   ln -s /usr/lib/eclipse/eclipse /usr/bin/eclipse
+   ln -s /usr/lib/eclipse/eclipse.ini /etc/eclipse.ini
+   cat >/usr/share/applications/eclipse.desktop <<EOF
+[Desktop Entry]
+Version=4.2
+Name=Eclipse
+Comment=Eclipse IDE for Scala
+Exec=/usr/bin/eclipse
+Icon=/usr/lib/eclipse/icon.xpm
+Terminal=false
+Type=Application
+Categories=IDE
+EOF
+   xdg-desktop-menu install --novendor /usr/share/applications/eclipse.desktop
+fi
+
