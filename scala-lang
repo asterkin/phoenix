@@ -19,7 +19,7 @@ if [ "$1" == "ide" ]; then
 Version=4.2
 Name=Eclipse
 Comment=Eclipse IDE for Scala
-Exec=/usr/bin/eclipse
+Exec=env UBUNTU_MENUPROXY=0 /usr/bin/eclipse
 Icon=/usr/lib/eclipse/icon.xpm
 Terminal=false
 Type=Application
