@@ -8,6 +8,6 @@ apt-get -y install git-core
 apt-get -y install gitk
 NAME=`getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f 1
 git config --global --add user.name "$NAME"
-git config --global --add user.email "$2"
+git config --global --add user.email "$USER@yourorg.com" #TODO
 git config --global --list
 
