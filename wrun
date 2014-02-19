@@ -1,0 +1,4 @@
+wget -O /tmp/$2 http://$1/$2
+chmod +x /tmp/$2
+sudo /tmp/$2 "${@:3}"
+rm /tmp/$2
