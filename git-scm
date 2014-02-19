@@ -4,7 +4,7 @@ apt-get -q -y update
 apt-get -q -y upgrade
 apt-get -y install git-core
 apt-get -y install gitk
-NAME=`getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f 1
+NAME=`getent passwd $USER | cut -d ':' -f 5 | cut -d ',' -f 1`
 git config --global --add user.name "$NAME"
 git config --global --add user.email "$USER@$EMAIL_SERVER"
 git config --global --list
