@@ -1,2 +1,2 @@
-echo "Hellow:" "$@"
+echo "Hellow World!"
 
