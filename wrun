@@ -5,5 +5,5 @@ if [ "$#" -gt 2 ]; then
 else
   ARGS=""
 fi
-sudo /tmp/$2 "$ARGS"
+/tmp/$2 "$ARGS"
 rm /tmp/$2
