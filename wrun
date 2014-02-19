@@ -1,4 +1,9 @@
 wget -O /tmp/$2 http://$1/$2
 chmod +x /tmp/$2
-sudo /tmp/$2 "${@:3}"
+if [ "$#" -gt 2 ]; then
+  ARGS="${@:3}"
+else
+  ARGS=""
+fi
+sudo /tmp/$2 "$ARGS"
 rm /tmp/$2
