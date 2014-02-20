@@ -1,10 +1,57 @@
 #!/bin/bash
 
-apt-get -y update
-apt-get -y upgrade
-apt-get -y install eclipse-platform
-/usr/lib/eclipse/eclipse -nosplash \
-   -application org.eclipse.equinox.p2.director \
-   -repository http://download.eclipse.org/releases/juno/ \
-   -installIU org.eclipse.egit.feature.group \
-   -destination /usr/lib/eclipse
+#Install Eclipse IDE
+URL=http://mirror.netcologne.de/eclipse/technology/epp/downloads/release/kepler/SR1/eclipse-standard-kepler-SR1-linux-gtk-x86_64.tar.gz
+echo $URL
+wget -O /tmp/eclipse-ide.tar.gz "$URL"
+tar -zxvf /tmp/eclipse-ide.tar.gz -C /usr/lib/
+rm /tmp/eclipse-ide.tar.gz
+ln -s /usr/lib/eclipse/eclipse /usr/bin/eclipse
+ln -s /usr/lib/eclipse/eclipse.ini /etc/eclipse.ini
+cat >eclipse.desktop <<EOF
+[Desktop Entry]
+Name=Eclipse 
+Type=Application
+Exec=eclipse
+Terminal=false
+Icon=eclipse
+Comment=Integrated Development Environment
+NoDisplay=false
+Categories=Development;IDE;
+Name[en]=Eclipse
+EOF
+desktop-file-install eclipse.desktop
+rm eclipse.desktop
+cp /usr/lib/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
+
+#Install Groovy Plug-in
+eclipse -nosplash \
+  -application org.eclipse.equinox.p2.director \
+  -repository http://dist.springsource.org/release/GRECLIPSE/e4.3/ \
+  -destination /usr/lib/eclipse \
+  -installIU org.codehaus.groovy.eclipse.feature.feature.group
+
+#Install Scala Plug-in
+eclipse -nosplash \
+  -application org.eclipse.equinox.p2.director \
+  -repository http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site \
+  -destination /usr/lib/eclipse \
+  -installIU org.scala-ide.sdt.feature.feature.group \
+  -installIU org.scala-ide.sdt.weaving.feature.feature.group \
+  -installIU org.scala-ide.sdt.dev.feature.feature.group \
+  -installIU org.scala-ide.sdt.source.feature.feature.group
+
+#Install Gradle Plug-in
+eclipse -nosplash \
+  -application org.eclipse.equinox.p2.director \
+  -destination /usr/lib/eclipse \
+  -repository http://dist.springsource.com/release/TOOLS/gradle \
+  -installIU org.springsource.ide.eclipse.gradle.feature.feature.group
+
+#List all installed packages
+eclipse -nosplash \
+  -application org.eclipse.equinox.p2.director \
+  -listInstalledRoots
+
+
+
