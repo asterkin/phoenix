@@ -1,4 +1,5 @@
 #!/bin/bash
+#TODO: move ide to eclipse
 
 if [ "$1" == "ide" ]; then
     /usr/lib/eclipse/eclipse -nosplash \
@@ -7,9 +8,14 @@ if [ "$1" == "ide" ]; then
       -destination /usr/lib/eclipse \
       -installIU org.springsource.ide.eclipse.gradle.feature.feature.group
 else
-  apt-get -y update
-  apt-get -y upgrade
-  apt-get -y install openjdk-7-jdk
+  apt-get -y install python-software-properties
+  add-apt-repository -y ppa:webupd8team/java
+  apt-get -q -y update
+  echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+  apt-get -y install oracle-java7-installer
+  ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
+
   add-apt-repository -y ppa:cwchien/gradle
   apt-get -q -y update
   apt-get -y install gradle
