@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Install Eclipse IDE
-URL=http://mirror.netcologne.de/eclipse/technology/epp/downloads/release/kepler/SR1/eclipse-standard-kepler-SR1-linux-gtk-x86_64.tar.gz
+URL=http://downloads.typesafe.com/scalaide-pack/3.0.2.vfinal-210-20131028/scala-SDK-3.0.2-vfinal-2.10-linux.gtk.x86_64.tar.gz
 echo $URL
 wget -O /tmp/eclipse-ide.tar.gz "$URL"
 tar -zxvf /tmp/eclipse-ide.tar.gz -C /usr/lib/
@@ -15,6 +15,7 @@ Type=Application
 Exec=eclipse
 Terminal=false
 Icon=eclipse
+Exec=env UBUNTU_MENUPROXY= eclipse
 Comment=Integrated Development Environment
 NoDisplay=false
 Categories=Development;IDE;
@@ -31,27 +32,15 @@ eclipse -nosplash \
   -destination /usr/lib/eclipse \
   -installIU org.codehaus.groovy.eclipse.feature.feature.group
 
-#Install Scala Plug-in
+#Install Groovy Plug-in
 eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
-  -repository http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site \
+  -repository http://download.eclipse.org/egit/updates \
   -destination /usr/lib/eclipse \
-  -installIU org.scala-ide.sdt.feature.feature.group \
-  -installIU org.scala-ide.sdt.weaving.feature.feature.group \
-  -installIU org.scala-ide.sdt.dev.feature.feature.group \
-  -installIU org.scala-ide.sdt.source.feature.feature.group
-
-#Install Gradle Plug-in
-eclipse -nosplash \
-  -application org.eclipse.equinox.p2.director \
-  -destination /usr/lib/eclipse \
-  -repository http://dist.springsource.com/release/TOOLS/gradle \
-  -installIU org.springsource.ide.eclipse.gradle.feature.feature.group
+  -installIU org.eclipse.egit.feature.group
 
 #List all installed packages
 eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
   -listInstalledRoots
-
-
 
