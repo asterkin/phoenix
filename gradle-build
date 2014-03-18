@@ -12,3 +12,6 @@ ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
 add-apt-repository -y ppa:cwchien/gradle
 apt-get -q -y update
 apt-get -y install gradle
+
+apt-get -y install curl
+
