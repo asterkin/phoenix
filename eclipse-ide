@@ -12,7 +12,6 @@ cat >eclipse.desktop <<EOF
 [Desktop Entry]
 Name=Eclipse 
 Type=Application
-Exec=eclipse
 Terminal=false
 Icon=eclipse
 Exec=env UBUNTU_MENUPROXY= eclipse
