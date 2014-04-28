@@ -11,7 +11,7 @@ To start working with Phoenix scripts I recommend the following procedure:
   3. sudo chmod +x /usr/bin/wrun
   4. sudo cat >>/etc/environment <<EOF
   5. EMAIL_SERVER="your-company-mail-server (e.g. cisco.com)"
-  6. <<EOF
+  6. EOF
 
 Once you have the basic definitions in place you could use the wget script to run various Phoenix scripts. Example:
 
