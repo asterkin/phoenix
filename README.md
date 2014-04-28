@@ -8,7 +8,7 @@ To start working with Phoenix scripts I recommend the following procedure:
   1. Install a basic Ubintu version (current 12.10)
   2. Ensure that your account and user name is identical to that what you normally use in your organization. Example: asterkin, Asher Sterkin
   2. sudo wget -O /usr/bin/wrun http://github.com/asterkin/phoenix/raw/master/wget
-  3. sudo chmod +x /usr/bin/wget
+  3. sudo chmod +x /usr/bin/wrun
   4. sudo cat >>/etc/environment <<EOF
   5. EMAIL_SERVER="your-company-mail-server (e.g. cisco.com)"
   6. <<EOF
