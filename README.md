@@ -13,9 +13,9 @@ To start working with Phoenix scripts I recommend the following procedure:
   5. EMAIL_SERVER="your-company-mail-server (e.g. cisco.com)"
   6. EOF
 
-Once you have the basic definitions in place you could use the wget script to run various Phoenix scripts. Example:
+Once you have the basic definitions in place you could use the wrun script to run various Phoenix scripts. Example:
 
-wget github.com/asterkin/phoenix/raw/master git-scm
+wrun github.com/asterkin/phoenix/raw/master git-scm
 
 Please, pay attention, all Phoenix scripts except for git-scm normally should be run with sudo. Example:
 
