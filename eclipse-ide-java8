@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #Install Eclipse IDE
-URL="http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-standard-kepler-SR2-linux-gtk-x86_64.tar.gz&r=1"
+URL="http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/I20140428-2000/eclipse-SDK-I20140428-2000-linux-gtk-x86_64.tar.gz&mirror_id=1&r=1"
 echo $URL
 wget -O /tmp/eclipse-ide.tar.gz "$URL"
-tar -zxvf /tmp/eclipse-ide.tar.gz -C /usr/lib/
+sudo tar -zxvf /tmp/eclipse-ide.tar.gz -C /usr/lib/
 rm /tmp/eclipse-ide.tar.gz
-ln -s /usr/lib/eclipse/eclipse /usr/bin/eclipse
-ln -s /usr/lib/eclipse/eclipse.ini /etc/eclipse.ini
+sudo ln -s /usr/lib/eclipse/eclipse /usr/bin/eclipse
+sudo ln -s /usr/lib/eclipse/eclipse.ini /etc/eclipse.ini
 cat >eclipse.desktop <<EOF
 [Desktop Entry]
 Name=Eclipse 
@@ -20,29 +20,28 @@ NoDisplay=false
 Categories=Development;IDE;
 Name[en]=Eclipse
 EOF
-desktop-file-install eclipse.desktop
+sudo desktop-file-install eclipse.desktop
 rm eclipse.desktop
-cp /usr/lib/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
+sudo cp /usr/lib/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
 
 #Install Groovy Plug-in
-eclipse -nosplash \
-  -application org.eclipse.equinox.p2.director \
-  -repository http://dist.springsource.org/release/GRECLIPSE/e4.3/ \
-  -destination /usr/lib/eclipse \
-  -installIU org.codehaus.groovy.eclipse.feature.feature.group
+#sudo eclipse -nosplash \
+#  -application org.eclipse.equinox.p2.director \
+#  -repository http://dist.springsource.org/release/GRECLIPSE/e4.3/ \
+#  -destination /usr/lib/eclipse \
+#  -installIU org.codehaus.groovy.eclipse.feature.feature.group
 
-#Install Groovy Plug-in
-eclipse -nosplash \
+#Install Git Plug-in
+sudo eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
   -repository http://download.eclipse.org/egit/updates \
   -destination /usr/lib/eclipse \
   -installIU org.eclipse.egit.feature.group
 
 #List all installed packages
-eclipse -nosplash \
+sudo eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
   -listInstalledRoots
 
-echo Manually add Java8 plugin.
 
 
