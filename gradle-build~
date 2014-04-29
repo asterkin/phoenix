@@ -1,4 +1,5 @@
 #!/bin/bash
+#TODO: move ide to eclipse
 
 apt-get -y install python-software-properties
 add-apt-repository -y ppa:webupd8team/java
