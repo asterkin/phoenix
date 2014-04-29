@@ -31,7 +31,7 @@ eclipse -nosplash \
   -destination /usr/lib/eclipse \
   -installIU org.codehaus.groovy.eclipse.feature.feature.group
 
-#Install Git Plug-in
+#Install Groovy Plug-in
 eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
   -repository http://download.eclipse.org/egit/updates \

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+URL="http://download.netbeans.org/netbeans/8.0/final/zip/moduleclusters/netbeans-8.0-201403101706-all-in-one.zip"
+
+echo "URL"
+#wget -O /tmp/netbeans.zip "$URL"
+#sudo unzip /tmp/netbeans.zip -d /usr/lib
+#rm /tmp/netbeans.zip
+#sudo ln -s /usr/lib/netbeans/bin/netbeans /usr/bin/netbeans
+cat >netbeans.desktop <<EOF
+[Desktop Entry]
+Name=Netbeans 
+Type=Application
+Terminal=false
+Icon=netbeans
+Exec=netbeans
+Comment=Integrated Development Environment
+NoDisplay=false
+Categories=Development;IDE;
+Name[en]=Netbeans
+EOF
+sudo desktop-file-install netbeans.desktop
+rm netbeans.desktop
+sudo cp /usr/lib/netbeans/nb/netbeans.png /usr/share/pixmaps/netbeans.png
+
