@@ -1,13 +1,14 @@
 #!/bin/bash
 
 #Install Eclipse IDE
-URL=http://downloads.typesafe.com/scalaide-pack/3.0.2.vfinal-210-20131028/scala-SDK-3.0.2-vfinal-2.10-linux.gtk.x86_64.tar.gz
+URL=http://downloads.typesafe.com/scalaide-pack/3.0.3.vfinal-210-20140327/scala-SDK-3.0.3-2.10-linux.gtk.x86_64.tar.gz
 echo $URL
 wget -O /tmp/eclipse-ide.tar.gz "$URL"
 tar -zxvf /tmp/eclipse-ide.tar.gz -C /usr/lib/
 rm /tmp/eclipse-ide.tar.gz
 ln -s /usr/lib/eclipse/eclipse /usr/bin/eclipse
 ln -s /usr/lib/eclipse/eclipse.ini /etc/eclipse.ini
+#Make Desktop Entry
 cat >eclipse.desktop <<EOF
 [Desktop Entry]
 Name=Eclipse 
@@ -23,6 +24,8 @@ EOF
 desktop-file-install eclipse.desktop
 rm eclipse.desktop
 cp /usr/lib/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
+#Change permissions for configurations to avoid locking problem
+chmod -R o+rwx /usr/lib/eclipse/configuration
 
 #Install Groovy Plug-in
 eclipse -nosplash \
