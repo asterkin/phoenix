@@ -7,6 +7,24 @@ echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selec
 echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
 apt-get -y install oracle-java7-installer
 ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
+#Ensure RAM-disk copy of jvm on every boot (not ideal, since it conflict with other configrations)
+cat >/etc/rc.local <<EOF
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# Make a copy of jvm on RAM-disk to improve Eclipse preformance.
+mkdir /dev/shm/java
+cp -r /usr/lib/jvm/java-7-oracle/* /dev/shm/java
+exit 0
+EOF
 
 add-apt-repository -y ppa:cwchien/gradle
 apt-get -q -y update

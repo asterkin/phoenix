@@ -1,0 +1,7 @@
+#!/bin/bash
+
+URL=http://ffmpeg.gusari.org/static/64bit/ffmpeg.static.64bit.latest.tar.gz
+wget -O /tmp/ffmpeg.tar.gz "$URL"
+tar -zxvf /tmp/ffmpeg.tar.gz -C /usr/bin/
+rm /tmp/ffmpeg.tar.gz
+

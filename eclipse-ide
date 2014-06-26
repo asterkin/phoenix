@@ -15,7 +15,7 @@ Name=Eclipse
 Type=Application
 Terminal=false
 Icon=eclipse
-Exec=env UBUNTU_MENUPROXY= eclipse
+Exec=env UBUNTU_MENUPROXY= eclipse -vm /dev/shm/java/jre/bin
 Comment=Integrated Development Environment
 NoDisplay=false
 Categories=Development;IDE;
@@ -26,7 +26,6 @@ rm eclipse.desktop
 cp /usr/lib/eclipse/icon.xpm /usr/share/pixmaps/eclipse.xpm
 #Change permissions for configurations to avoid locking problem
 chmod -R o+rwx /usr/lib/eclipse/configuration
-
 #Install Groovy Plug-in
 eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
