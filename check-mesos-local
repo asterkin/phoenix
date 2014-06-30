@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -i localhost:5050/master/health
+
