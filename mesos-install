@@ -15,9 +15,10 @@ easy_install /tmp/mesos.egg
 pip install deimos
 
 #install marathon
-curl 0fL http://downloads.mesosphere.io/marathon/marathon-0.6.0/marathon-0.6.0.tgz /tmp/marathon.tgz
+curl -sSfL http://downloads.mesosphere.io/marathon/marathon-0.6.0/marathon-0.6.0.tgz --output /tmp/marathon.tgz
 tar xzf /tmp/marathon.tgz -C /opt/
-#rm -f /tmp/marathon.tgz
+mv /opt/marathon-0.6.0 /opt/marathon
+rm -f /tmp/marathon.tgz
 
 #To configure Mesos to use Deimos, you need to set the contents
 #of two files:
