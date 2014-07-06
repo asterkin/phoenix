@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#get Deimos pre-requisites
+easy_install pip
+
+#install deimos (Docker integration)
+pip install deimos
+
+#To configure Mesos to use Deimos, you need to set the contents
+#of two files:
+ 
+mkdir -p /etc/mesos-slave
+echo /usr/local/bin/deimos | dd of=/etc/mesos-slave/containerizer_path
+echo external | dd of=/etc/mesos-slave/isolation
+
+#TODO: add test here
+
+reboot
