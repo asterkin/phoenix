@@ -12,7 +12,7 @@ To start working with Phoenix scripts I recommend the following procedure:
   5. Add a new line: EMAIL_SERVER="your-company-mail-server (e.g. cisco.com)"
   6. save the file
   7. source /etc/environment or restart Linux
-  8. Install git by running curl -s https://raw.githubusercontent.com/asterkin/phoenix/master/git-scm | sudo sh
+  8. Install git by running curl -s https://raw.githubusercontent.com/asterkin/phoenix/master/git-scm | sh
   9. git clone http://github.com/asterkin/phoenix
 
 
