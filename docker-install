@@ -16,5 +16,5 @@ sudo gpasswd -a ${USER} docker
 # Restart the docker daemon.
 sudo service docker restart
 
-reboot
+sudo reboot
 
