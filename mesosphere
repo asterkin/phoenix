@@ -1,9 +1,38 @@
+#!/bin/bash
+
+#Install Oracle JVM-7
+apt-get -y install python-software-properties
+add-apt-repository -y ppa:webupd8team/java
+apt-get -q -y update
+echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+apt-get -y install oracle-java7-installer
+ln -f -s /usr/lib/jvm/java-7-oracle /usr/lib/jvm/default-java
+#Ensure RAM-disk copy of jvm on every boot (not ideal, since it conflict with other configrations)
+cat >/etc/rc.local <<EOF
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# Make a copy of jvm on RAM-disk to improve Eclipse preformance.
+mkdir /dev/shm/java
+cp -r /usr/lib/jvm/java-7-oracle/* /dev/shm/java
+exit 0
+EOF
+
 #Install dependencies and tools
 sudo apt-get update
-sudo apt-get install curl python-setuptools python-pip python-dev python-protobuf
+sudo apt-get install -y curl python-setuptools python-pip python-dev python-protobuf
 
 #Install Zookeper
-sudo apt-get install zookeeperd
+sudo apt-get install -y zookeeperd
 echo 1 | sudo dd of=/var/lib/zookeeper/myid
 
 ## Install and run Docker
@@ -11,6 +40,15 @@ echo 1 | sudo dd of=/var/lib/zookeeper/myid
 sudo apt-get install docker.io
 sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
 sudo sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+
+# Add the docker group if it doesn't already exist.
+sudo groupadd docker
+ 
+# Add the connected user "${USER}" to the docker group.
+# Change the user name to match your preferred user.
+# You may have to logout and log back in again for
+# this to take effect.
+sudo gpasswd -a ${USER} docker
 
 #Install and Configure Mesos
 curl -sSfL http://downloads.mesosphere.io/master/ubuntu/14.04/mesos_0.19.0~ubuntu14.04%2B1_amd64.deb -o /tmp/mesos.deb
