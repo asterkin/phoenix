@@ -32,3 +32,4 @@ apt-get -y install gradle
 
 apt-get -y install curl
 
+reboot
