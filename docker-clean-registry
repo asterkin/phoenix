@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker images | grep localhost | awk '{print $1":"$2}' | xargs -r docker rmi
