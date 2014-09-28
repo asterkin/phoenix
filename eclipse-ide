@@ -40,6 +40,13 @@ eclipse -nosplash \
   -destination /usr/lib/eclipse \
   -installIU org.eclipse.egit.feature.group
 
+#Install Scalatest Plugin
+eclipse -nosplash \
+  -application org.eclipse.equinox.p2.director \
+  -repository http://download.scala-ide.org/sdk/helium/e38/scala210/stable/site/ \
+  -destination /usr/lib/eclipse \
+  -installIU org.scala-ide.sdt.scalatest.feature.feature.group
+
 #List all installed packages
 eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
