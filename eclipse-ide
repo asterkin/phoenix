@@ -52,3 +52,6 @@ eclipse -nosplash \
   -application org.eclipse.equinox.p2.director \
   -listInstalledRoots
 
+#Change permissions for configurations to avoid locking problem
+chmod -R o+rwx /usr/lib/eclipse/configuration
+

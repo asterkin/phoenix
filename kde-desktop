@@ -1,9 +1,9 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install -y xfce4 
+sudo apt-get install -y kde-plasma-desktop 
 sudo apt-get install python-software-properties
-sudo add-apt-repository -q ppa:x2go/stable
+sudo add-apt-repository ppa:x2go/stable
 sudo apt-get update
 sudo apt-get install -y x2goserver x2goserver-xsession
 
