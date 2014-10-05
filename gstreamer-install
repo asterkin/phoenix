@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo apt-get install -y gstreamer
+sudo add-apt-repository -y ppa:mc3man/trusty-media
+sudo apt-get update
+sudo apt-get install -y ffmpeg gstreamer0.10-ffmpeg
+gst-launch-0.10 playbin2 uri=rtsp://184.72.239.149/vod/mp4:BigBuckBunny_175k.mov
+
