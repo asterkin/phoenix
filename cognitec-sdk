@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Install Cognitec SDK
+URL=http://download.cognitec.com/facevacs/fvsdk8980-linux-setup-86190316.tar.gz
+SDK=FVSDK_8_9_8
+
+wget -O /tmp/cognitec-sdk.tar.gz "$URL"
+sudo tar -zxvf /tmp/cognitec-sdk.tar.gz -C /opt
+rm /tmp/cognitec-sdk.tar.gz
+sudo /sbin/ldconfig -n /opt/$SDK/lib/x86_/64/share
+sudo sed -i "s/MAINDIR/\/opt\/$SDK/g" /opt/$SDK/etc/frsdk.cfg
+sudo bash -c "echo LD_LIBRARY_PATH=\"/opt/$SDK/lib/x86_64/gcc-4.6-ipp:/opt/$SDK/lib/x86_64/share\" >>/etc/environment"
+sudo bash -c "cat >/usr/bin/cfgedit <<EOF
+/opt/$SDK/bin/x86_64/cfgedit -f /opt/$SDK/etc/frsdk.cfg
+EOF"
+sudo chmod +x /usr/bin/cfgedit
+sudo chmod +x /usr/bin/hwkey
+sudo bash -c "cat >/usr/bin/hwkey <<EOF
+/opt/$SDK/bin/x86_64/hwkey 
+EOF"
+sudo chmod +x /usr/bin/hwkey
+sudo reboot
+
