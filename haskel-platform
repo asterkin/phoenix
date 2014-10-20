@@ -6,4 +6,6 @@ wget -O /tmp/haskell-platform.tar.gz "$URL"
 sudo tar -zxvf /tmp/haskell-platform.tar.gz -C /
 sudo /usr/local/haskell/ghc-7.8.3-x86_64/bin/activate-hs
 rm /tmp/haskell-platform.tar.gz
+sudo apt-get install -y gcc
+sudo apt-get install -y libgmp-dev
 
