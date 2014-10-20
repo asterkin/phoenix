@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#Install Haskell Platform
+URL=https://www.haskell.org/platform/download/2014.2.0.0/haskell-platform-2014.2.0.0-unknown-linux-x86_64.tar.gz
+wget -O /tmp/haskell-platform.tar.gz "$URL"
+sudo tar -zxvf /tmp/haskell-platform.tar.gz -C /
+sudo /usr/local/haskell/ghc-7.8.3-x86_64/bin/activate-hs
+rm /tmp/haskell-platform.tar.gz
+
