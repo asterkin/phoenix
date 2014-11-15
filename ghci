@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run -ti -v /home/$USER:/home/$USER haskell-platform ghci $1
+
